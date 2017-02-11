@@ -1,0 +1,21 @@
+<!DocTYPE html>
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>angular try</title>
+<script type="text/javascript"  src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js" ></script> 	
+</head>
+<body>
+
+ This is test
+
+ <div ng-app="" data-ng-init="amount='9,5000,000'">
+	 <p> Name: <input type="text" name="fname" ng-model="name2"></p>
+	 <h3> Hi {{name2}}</h3>
+
+	 <p ng-bind="name2"> is my name . It is example of ngBind use. </p>
+	 <p> daa-ng-bind example of  use inside  <span data-ng-bind="name2"> </span> </p>
+	 <p> from ng-init Target save $<span data-ng-bind="amount"></span> </p>
+ </div>
+</body>
+</html>
