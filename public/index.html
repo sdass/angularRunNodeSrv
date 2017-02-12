@@ -4,12 +4,13 @@
 <head>
 	<title>angular try</title>
 <script type="text/javascript"  src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js" ></script> 	
+<script type="text/javascript" src="scriptOne.js"></script>
 </head>
 <body>
 
  This is test
 
- <div ng-app="myapp" ng-controller="myController" ng-init= "foods = [{ name: 'meat'}, {name: 'egg'}, {name: 'fish'}]" >
+ <div ng-app="myapp" ng-controller="myController"  >
 
 	 <p> Name: <input type="text" id="fname" name="fname" ng-model="name2" value="Adefault" ng-change="getfullName()"></p>
 	 <p> Surname: <input type="text" id="lname" name="lname" ng-model="name3" value="Bdefault"  ng-change="getfullName()"></p>
@@ -22,7 +23,7 @@
 	<p> 2Fullname ng-bind <span ng-bind="fullname" /> </p>
 	<hr>
 
-	 <p> Food I choose <span>{{foods[0].name}}, {{foods[1].name}} and {{foods[2].name}}  </span> </p>
+	 
 
 	 <button ng-click="getHello(fullname)">Hello</button>
 	 <button ng-click="getBye(fullname)">Bye</button>
@@ -35,60 +36,5 @@
 	<p> Bye from service: <h3>{{ByeUser}}</h3> </p>
  </div>
 
-
- <script type="text/javascript">
- 	var apphook = angular.module('myapp',  {
- 	  setup: function() {
- 	    // setup for module name 
- 	    console.log("Inside setup function . . .");
- 	  },
- 	  teardown: function() {
- 	    //teardown for module name
- 	    console.log("Inside teardown function . . .");
- 	  }
- 	});
- 	
- 	//angular controller
- 	apphook.controller('myController', ['$scope', '$location', 'myOwnService', function($scope, $location, myOwnService){
- 		console.log("Entered in mycontroller . . . . " + $location.absUrl());
- 		
- 		$scope.getfullName  = function(){
-	 		var fn = document.getElementById('fname').value 
-	 		var ln = document.getElementById('lname').value 
-	 		console.log("fn=" + fn + " ln=" + ln);
-	 		$scope.fullname = fn + ' ' + ln;
-	 		$scope.getHello($scope.fullname); //this is a critical line
-
-	 	};
-	 	$scope.getHello = function(fullname){
-	 		$scope.HelloUser = myOwnService.sayHello(fullname);
-	 	};
-	 	$scope.getBye = function(fullname){
-	 		$scope.ByeUser = myOwnService.sayBye(fullname);
-	 	}
-
- 		
- 	}]);
-
- 	//angular service
- 	apphook.factory('myOwnService', ['$window', function($window){
- 		return {
- 			sayHello: function(person) {
- 				console.log("person " + person);
- 				$window.document.getElementById("showsHello").style.display = "block";
- 				return "service: Hi " + person;
- 			 },
- 			
- 			 sayBye: function(person) {
- 				//$window.location.href = "http://google.com";
- 				$window.document.getElementById("showsHello").style.display = "none";
- 				return "service: Bye " + person;
- 				
- 			 }
- 		};
- 	}])
-
-
- </script>
 </body>
 </html>
