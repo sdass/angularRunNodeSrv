@@ -9,3 +9,9 @@ read each log line after server starts.
 
 -o #Open browser window after starting the server
 https://www.npmjs.com/package/http-server # guide for options
+
+
+Other notes
+route help taken from: https://scotch.io/tutorials/single-page-apps-with-angularjs-routing-and-templating
+navigation home url tricky href taken from w3c example  <li><a href="#/">
+index.html is base and other pages/* are partials
